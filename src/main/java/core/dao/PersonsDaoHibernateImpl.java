@@ -12,7 +12,7 @@ public class PersonsDaoHibernateImpl extends AbstractDao<Person> implements Pers
 
     @Override
     public Person GetUserByName(String userName) {
-        String hql = "select per from person as per where first_name = :name";
+        String hql = "select per from Person as per where first_name = :name";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         query.setParameter("name", userName);
 

@@ -14,8 +14,9 @@ public class Company {
     @Column(name = "company_name")
     private String name;
 
-  /* @Column(name = "address")
-    private Address address;*/
+  /*  @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<Address> address;*/
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)

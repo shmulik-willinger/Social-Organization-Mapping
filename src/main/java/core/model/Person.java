@@ -24,11 +24,12 @@ public class Person {
     @Column(name = "cibus_number")
     private String cibusNumber;
 
-   /* @Column(name = "address")
-    private Address address;*/
-
     @Column(name = "status")
     private String Status;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+    @JoinColumn(name="user_id")
+    private List<Address> addresses;
 
     @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
     @JoinColumn(name="user_id")
@@ -36,13 +37,13 @@ public class Person {
 
     @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
     @JoinColumn(name="user_id")
-    private List<Company> companys;
+    private List<Job> jobs;
 
-    public Integer getUser_id() {
+    public Integer getPerson_id() {
         return person_id;
     }
 
-    public void setUser_id(Integer person_id) {
+    public void setPerson_id(Integer person_id) {
         this.person_id = person_id;
     }
 
@@ -86,6 +87,14 @@ public class Person {
         Status = status;
     }
 
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
+    }
+
     public List<Phones> getPhones() {
         return phones;
     }
@@ -94,11 +103,11 @@ public class Person {
         this.phones = phones;
     }
 
-    public List<Company> getCompanys() {
-        return companys;
+    public List<Job> getJobs() {
+        return jobs;
     }
 
-    public void setCompanys(List<Company> companys) {
-        this.companys = companys;
+    public void setJobs(List<Job> jobs) {
+        this.jobs = jobs;
     }
 }

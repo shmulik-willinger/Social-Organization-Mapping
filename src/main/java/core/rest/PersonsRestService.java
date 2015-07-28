@@ -15,24 +15,6 @@ public class PersonsRestService {
     @Autowired
     private PersonsBusinessService personsBusinessService;
 
-    /* Example:
-
-{
-     "firstName":"Shmulik",
-     "lastName":"Willinger",
-     "mail":"shmulik83@gmail.com",
-     "cibusNumber":"12345678",
-     "phones":[
-                 {"type":"MOBILE", "phoneNumber":"1234"},
-                 {"type":"HOME"  , "phoneNumber":"5678"}],
-     "addresses":[
-                 {"city":"Tel Aviv", "street":"Pinkas", "streetNumber":"52"},
-                 {"city":"Givat Shmuel", "street":"Yoni Netaniahu", "streetNumber":"32"}],
-     "jobs":[
-                 {"StartDate":"010313", "EndDate":"200815", "CompanyId":"1"},
-                 {"StartDate":"010310", "EndDate":"010313", "CompanyId":"2"}]
-}
-     */
     @POST
     public boolean addPerson(Person user) throws Exception {
 

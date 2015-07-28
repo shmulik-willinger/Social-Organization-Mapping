@@ -11,6 +11,8 @@ public class PersonsBusinessService {
     @Autowired
     private PersonsDao personsDao;
 
+    private Node4jEngine node4j;
+
     @Transactional
     public Person getById(Integer id) {
         return personsDao.read(Person.class, id);
@@ -20,9 +22,12 @@ public class PersonsBusinessService {
     public void saveUser(Person user) throws Exception
     {
         if (ValidateUniqeUserName(user))
+        {
             personsDao.create(user);
+            node4j.Send(user);
+        }
         else
-            throw new Exception("Person already exist");
+            throw new RuntimeException("Person already exist");
     }
 
     private boolean ValidateUniqeUserName(Person user)

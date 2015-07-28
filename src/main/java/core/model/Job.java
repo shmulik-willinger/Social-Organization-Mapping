@@ -1,6 +1,7 @@
 package core.model;
 
 import javax.persistence.*;
+import java.sql.Date;
 import java.text.DateFormat;
 
 @Entity
@@ -12,13 +13,17 @@ public class Job
     private Integer job_id;
 
     @Column(name = "start_date")
-    private DateFormat StartDate;
+    private Date StartDate;
 
     @Column(name = "end_date")
-    private DateFormat EndDate;
+    private Date EndDate;
 
     @Column(name = "company_id")
     private int CompanyId;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    private StatusType status;
 
     public Integer getJob_id() {
         return job_id;
@@ -28,19 +33,19 @@ public class Job
         this.job_id = job_id;
     }
 
-    public DateFormat getStartDate() {
+    public Date getStartDate() {
         return StartDate;
     }
 
-    public void setStartDate(DateFormat startDate) {
+    public void setStartDate(Date startDate) {
         StartDate = startDate;
     }
 
-    public DateFormat getEndDate() {
+    public Date getEndDate() {
         return EndDate;
     }
 
-    public void setEndDate(DateFormat endDate) {
+    public void setEndDate(Date endDate) {
         EndDate = endDate;
     }
 
@@ -50,5 +55,13 @@ public class Job
 
     public void setCompanyId(int companyId) {
         CompanyId = companyId;
+    }
+
+    public StatusType getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusType status) {
+        this.status = status;
     }
 }

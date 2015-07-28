@@ -14,13 +14,9 @@ public class Company {
     @Column(name = "company_name")
     private String name;
 
-  /*  @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
-    @JoinColumn(name="user_id")
-    private List<Address> address;*/
-
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    private StatusType status;
+    @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+    @JoinColumn(name="company_id")
+    private List<Address> address;
 
     public Integer getCompany_id() {
         return company_id;
@@ -38,11 +34,11 @@ public class Company {
         this.name = name;
     }
 
-    public StatusType getStatus() {
-        return status;
+    public List<Address> getAddress() {
+        return address;
     }
 
-    public void setStatus(StatusType status) {
-        this.status = status;
+    public void setAddress(List<Address> address) {
+        this.address = address;
     }
 }

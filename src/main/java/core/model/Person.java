@@ -27,8 +27,8 @@ public class Person {
     @Column(name = "status")
     private String Status;
 
-    @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
-    @JoinColumn(name="user_id")
+    @OneToMany(/*mappedBy = "person_id",*/ fetch = FetchType.EAGER, cascade= CascadeType.ALL)
+    @JoinColumn(name="person_id")
     private List<Address> addresses;
 
     @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)

@@ -18,6 +18,11 @@ public class Company {
     @JoinColumn(name="company_id")
     private List<Address> address;
 
+    public Company(String companyName)
+    {
+        name = companyName;
+    }
+
     public Integer getCompany_id() {
         return company_id;
     }

@@ -24,7 +24,7 @@ public class PersonsBusinessService {
         if (ValidateUniqeUserName(user))
         {
             personsDao.create(user);
-            node4j.Send(user);
+            //node4j.Send(user);
         }
         else
             throw new RuntimeException("Person already exist");

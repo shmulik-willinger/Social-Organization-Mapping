@@ -25,6 +25,13 @@ public class Job
     @Enumerated(EnumType.STRING)
     private StatusType status;
 
+  /*  public Job(Date startDate, Date endDate, int companyId) {
+        StartDate = startDate;
+        EndDate = endDate;
+        CompanyId = companyId;
+        //this.status = status;
+    }*/
+
     public Integer getJob_id() {
         return job_id;
     }

@@ -2,19 +2,25 @@ package core.model;
 
 import javax.persistence.*;
 import java.util.List;
-
+import org.neo4j.graphdb.Direction;
+import org.springframework.data.neo4j.annotation.*;
+import org.springframework.data.neo4j.support.index.IndexType;
 
 @Entity
 @Table(name = "person")
+@NodeEntity
 public class Person {
 
     @Id
+    @GraphId
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer person_id;
 
+    @Indexed
     @Column(name = "first_name")
     private String FirstName;
 
+    @Indexed
     @Column(name = "last_name")
     private String LastName;
 
@@ -35,9 +41,16 @@ public class Person {
     @JoinColumn(name="user_id")
     private List<Phones> phones;
 
+    @RelatedTo(type = "Related Jobs", direction = Direction.OUTGOING)
     @OneToMany(fetch = FetchType.EAGER, cascade= CascadeType.ALL)
     @JoinColumn(name="user_id")
     private List<Job> jobs;
+
+  /*  public Person(String firstName, String lastName)
+    {
+        FirstName = firstName;
+        LastName = lastName;
+    }*/
 
     public Integer getPerson_id() {
         return person_id;
@@ -109,5 +122,9 @@ public class Person {
 
     public void setJobs(List<Job> jobs) {
         this.jobs = jobs;
+    }
+
+    public void setJob(Job job) {
+        this.jobs.add(job);
     }
 }

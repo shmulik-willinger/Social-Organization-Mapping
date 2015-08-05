@@ -18,10 +18,30 @@
     <context:annotation-config/>
     <context:component-scan base-package="core" />
 
-    <neo4j:config storeDirectory="target/neo4j-db-plain"
-                  base-package="core.model"/>
+    <neo4j:config storeDirectory="target/neo4j-db-plain"  base-package="core.model"/>
     <neo4j:repositories base-package="core.repositories"/>
 
     <tx:annotation-driven />
+
+    <context:annotation-config />
+    <context:component-scan base-package="core"/>
+
+    <neo4j:repositories base-package="core.repositories"/>
+
+    <tx:annotation-driven />
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/pages/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <bean id="restGraphDatabase"
+          class="org.springframework.data.neo4j.rest.SpringRestGraphDatabase">
+        <constructor-arg value="http://localhost:7474/db/data/" />
+    </bean>
+
+    <neo4j:config graphDatabaseService="restGraphDatabase"  base-package="core"/>
+
+    <neo4j:repositories base-package="core.repositories" />
 </beans>
 

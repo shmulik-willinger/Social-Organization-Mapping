@@ -22,3 +22,72 @@ addCompany  --   POST request  --  http://localhost:8080/companies
      "name":"Amdocs2",
       "address":[{"city":"Raanana", "street":"Hapnina", "streetNumber":"2"}]
 }
+
+
+
+CREATE (Shmulik:Person {name:'Shmulik Willinger', born:1983})
+CREATE (Inbar:Person {name:'Inbar Willinger', born:1985})
+CREATE (Ido:Person {name:'Ido Franko', born:1961})
+CREATE (Tal:Person {name:'Tal Rubinshtein', born:1960})
+CREATE (Alon:Person {name:'Alon Ginsberg', born:1967})
+CREATE (Nir:Person {name:'Nir Wachowski', born:1965})
+CREATE (Lior:Person {name:'Lior Menashe', born:1952})
+CREATE (Avishag:Person {name:'Avishag', born:1952})
+
+CREATE (Tikal:Company {title:'Tikal knowledge', released:1985})
+CREATE (Amdocs:Company {title:'Amdocs IL', released:1976})
+CREATE (Clalbit:Company {title:'Clal Insurance', released:1963})
+CREATE (NCR:Company {title:'NCR', released:1979})
+CREATE (Intel:Company {title:'Intel', released:1979})
+CREATE (Microsoft:Company {title:'Microsoft', released:1979})
+CREATE (Google:Company {title:'Google', released:1979})
+CREATE (Facebook:Company {title:'Facebook', released:1979})
+CREATE (BankLeumi:Company {title:'Bank Leumi', released:1979})
+CREATE (Nice:Company {title:'Nice', released:1979})
+
+CREATE
+  (Shmulik)-[:WORKED_IN]->(Amdocs),
+  (Shmulik)-[:WORKED_IN]->(Clalbit),
+  (Shmulik)-[:WORKED_IN]->(Tikal),
+  (Shmulik)-[:WORKED_IN]->(NCR),
+
+  (Avishag)-[:WORKED_IN]->(Tikal),
+  (Avishag)-[:WORKED_IN]->(Google),
+
+  (Inbar)-[:WORKED_IN]->(BankLeumi),
+  (Inbar)-[:WORKED_IN]->(Nice),
+  (Inbar)-[:WORKED_IN]->(Facebook),
+  (Inbar)-[:WORKED_IN]->(NCR),
+
+  (Ido)-[:WORKED_IN]->(Intel),
+  (Ido)-[:WORKED_IN]->(Tikal),
+  (Ido)-[:WORKED_IN]->(Microsoft),
+  (Ido)-[:WORKED_IN]->(NCR),
+
+  (Tal)-[:WORKED_IN]->(Clalbit),
+  (Tal)-[:WORKED_IN]->(Facebook),
+  (Tal)-[:WORKED_IN]->(NCR),
+
+  (Alon)-[:WORKED_IN]->(Nice),
+  (Alon)-[:WORKED_IN]->(Intel),
+
+  (Nir)-[:WORKED_IN]->(NCR),
+  (Nir)-[:WORKED_IN]->(Clalbit),
+
+  (Lior)-[:WORKED_IN]->(Tikal),
+  (Lior)-[:WORKED_IN]->(BankLeumi),
+  (Lior)-[:WORKED_IN]->(Microsoft)
+  ------------------------------------------------------------------------------------------------
+
+CREATE (Shmulik:Person {name:'Shmulik Willinger', born:1983})
+CREATE (Ido:Person {name:'Ido Franko', born:1961})
+CREATE (Lior:Person {name:'Lior Menashe', born:1952})
+CREATE (Avishag:Person {name:'Avishag', born:1952})
+
+CREATE (Tikal:Company {title:'Tikal knowledge', released:1985})
+
+CREATE (Avishag)-[:WORKED_IN]->(Tikal),
+    (Shmulik)-[:WORKED_IN]->(Tikal),
+    (Ido)-[:WORKED_IN]->(Tikal),
+    (Lior)-[:WORKED_IN]->(Tikal)
+   ------------------------------------------------------------------------------------------------

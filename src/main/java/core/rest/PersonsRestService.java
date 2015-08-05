@@ -6,7 +6,9 @@ import core.model.Person;
 import core.repositories.PersonRepository;
 import core.services.PersonsBusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.neo4j.support.Neo4jTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.ws.rs.*;
 import java.sql.Date;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 @Service
+@Transactional
 @Path("/persons")
 @Produces("application/json")
 public class PersonsRestService {
@@ -23,16 +26,15 @@ public class PersonsRestService {
     @Autowired
     private PersonsBusinessService personsBusinessService;
 
-   // @Autowired
+    @Autowired
     private PersonRepository personRepository;
 
     @POST
     public boolean addPerson(Person user) throws Exception
     {
-
         personsBusinessService.saveUser(user);
 
-        //makeSomePersons();
+        makeSomePersons();
 
         return true;
     }

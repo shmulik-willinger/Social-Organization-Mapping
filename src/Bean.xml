@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:neo4j="http://www.springframework.org/schema/data/neo4j"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/data/neo4j http://www.springframework.org/schema/data/neo4j/spring-neo4j.xsd">
+
+       <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+              <property name="prefix" value="/WEB-INF/pages/"/>
+              <property name="suffix" value=".jsp"/>
+       </bean>
+
+       <bean id="restGraphDatabase"
+             class="org.springframework.data.neo4j.rest.SpringRestGraphDatabase">
+              <constructor-arg value="http://localhost:7474/db/data/" />
+       </bean>
+
+       <neo4j:config graphDatabaseService="restGraphDatabase"  base-package="core"/>
+
+       <neo4j:repositories base-package="core.repositories" />
+
+</beans>
